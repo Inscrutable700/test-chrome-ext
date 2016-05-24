@@ -1,0 +1,31 @@
+{
+    "manifest_version": 2,
+    "name": "Parimatch automate",
+    "description": "Automization Parimatch bet",
+    "version": "1.0",
+    "icons": {
+        "128": "128.png"
+    },
+    "permissions": [
+        "unlimitedStorage",
+        "notifications",
+        "activeTab"
+    ],
+    "browser_action": {
+        "default_title": "Open parimatch",
+        "default_icon": "128.png",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "persistent": false,
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [{
+        "matches": ["https://www.parimatch.com/bet.html*"],
+        "js": [ "jquery.js", "background.js" ],
+        "run_at": "document_end"
+    }],
+    "web_accessible_resources": [
+        "/injected.js"
+    ]
+}
